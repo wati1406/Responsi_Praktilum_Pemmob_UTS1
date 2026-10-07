@@ -6,9 +6,9 @@ Aplikasi Android berbasis **Kotlin** dan **Jetpack Compose** yang memungkinkan p
 
 ## Screenshot Aplikasi
 
-| Home Screen | Hasil Pencarian | Game Detail Screen |
-|:-----------:|:---------------:|:-----------------:|
-| ![Home Screen](screenshots/home.png) | ![Search Result](screenshots/search.png) | ![Game Detail Screen](screenshots/detail.png) |
+|              Home Screen              |              Hasil Pencarian              |               Game Detail Screen               |
+|:-------------------------------------:|:-----------------------------------------:|:----------------------------------------------:|
+| ![Home Screen](screenshots/home.jpeg) | ![Search Result](screenshots/search.jpeg) | ![Game Detail Screen](screenshots/detail.jpeg) |
 
 ---
 
