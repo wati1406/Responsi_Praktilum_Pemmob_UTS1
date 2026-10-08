@@ -9,29 +9,38 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
+
 class GameViewModel : ViewModel() {
+
+    // Inisialisasi Repository
     private val repository = GameRepository()
 
+
+
+    // State untuk daftar game
     private val _games = MutableStateFlow<List<Game>>(emptyList())
     val games: StateFlow<List<Game>> = _games.asStateFlow()
-
     private val _isLoading = MutableStateFlow(false)
     val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
 
     private val _searchQuery = MutableStateFlow("")
     val searchQuery: StateFlow<String> = _searchQuery.asStateFlow()
-    
+
+
     private val _selectedGame = MutableStateFlow<Game?>(null)
     val selectedGame: StateFlow<Game?> = _selectedGame.asStateFlow()
+
 
     init {
         fetchGames()
     }
 
+
     fun onSearchQueryChange(query: String) {
         _searchQuery.value = query
         fetchGames(query)
     }
+
 
     private fun fetchGames(query: String = "") {
         viewModelScope.launch {
@@ -41,7 +50,8 @@ class GameViewModel : ViewModel() {
             _isLoading.value = false
         }
     }
-    
+
+
     fun fetchGameDetail(id: Int) {
         viewModelScope.launch {
             _isLoading.value = true
@@ -50,7 +60,8 @@ class GameViewModel : ViewModel() {
             _isLoading.value = false
         }
     }
-    
+
+
     fun clearSelectedGame() {
         _selectedGame.value = null
     }

@@ -27,6 +27,8 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.responsi.model.Game
 import com.example.responsi.viewmodel.GameViewModel
+import androidx.compose.ui.tooling.preview.Preview
+import com.example.responsi.ui.theme.ResponsiTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -44,6 +46,7 @@ fun HomeScreen(viewModel: GameViewModel, onGameClick: (Int) -> Unit) {
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.background)
         ) {
+            // Judul halaman
             Text(
                 text = "Discover Games",
                 style = MaterialTheme.typography.headlineMedium,
@@ -51,7 +54,6 @@ fun HomeScreen(viewModel: GameViewModel, onGameClick: (Int) -> Unit) {
                 fontWeight = FontWeight.ExtraBold,
                 modifier = Modifier.padding(start = 24.dp, top = 32.dp, end = 24.dp, bottom = 8.dp)
             )
-
             OutlinedTextField(
                 value = searchQuery,
                 onValueChange = { viewModel.onSearchQueryChange(it) },
@@ -112,9 +114,7 @@ fun GameItem(game: Game, onClick: () -> Unit) {
             .padding(horizontal = 24.dp, vertical = 10.dp)
             .clickable(onClick = onClick),
         shape = RoundedCornerShape(20.dp),
-        colors = CardDefaults.cardColors(
-            containerColor = Color.Transparent
-        ),
+        colors = CardDefaults.cardColors(containerColor = Color.Transparent),
         elevation = CardDefaults.cardElevation(defaultElevation = 8.dp)
     ) {
         Box(
@@ -136,9 +136,7 @@ fun GameItem(game: Game, onClick: () -> Unit) {
                     contentScale = ContentScale.Crop
                 )
                 Spacer(modifier = Modifier.width(16.dp))
-                Column(
-                    modifier = Modifier.weight(0.6f)
-                ) {
+                Column(modifier = Modifier.weight(0.6f)) {
                     Text(
                         text = game.name,
                         style = MaterialTheme.typography.titleSmall,
@@ -174,7 +172,7 @@ fun GameItem(game: Game, onClick: () -> Unit) {
                             )
                             Spacer(modifier = Modifier.width(4.dp))
                             Text(
-                                text = "Released: $it",
+                                text = "Released: $it", // $it = string interpolation Kotlin
                                 style = MaterialTheme.typography.bodySmall,
                                 color = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.7f),
                                 maxLines = 1,
@@ -185,5 +183,26 @@ fun GameItem(game: Game, onClick: () -> Unit) {
                 }
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GameItemPreview() {
+    ResponsiTheme {
+        GameItem(
+            game = Game(
+                id = 1,
+                name = "Contoh Game Keren",
+                rating = 4.8,
+                released = "2023-10-15",
+                backgroundImage = "", 
+                description_raw = null,
+                metacritic = null,
+                genres = null,
+                platforms = null
+            ),
+            onClick = {}
+        )
     }
 }

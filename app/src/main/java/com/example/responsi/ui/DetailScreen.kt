@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.responsi.viewmodel.GameViewModel
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailScreen(viewModel: GameViewModel, gameId: Int, onNavigateBack: () -> Unit) {
@@ -43,20 +44,16 @@ fun DetailScreen(viewModel: GameViewModel, gameId: Int, onNavigateBack: () -> Un
             viewModel.clearSelectedGame()
         }
     }
-
-    // Gradasi card: ungu tua → biru gelap (dark) / lavender muda → biru muda (light)
     val cardGradient = if (isDark) {
-        Brush.linearGradient(
-            colors = listOf(Color(0xFF1A0040), Color(0xFF0D1B4B), Color(0xFF0A2444))
-        )
+        Brush.linearGradient(colors = listOf(Color(0xFF1A0040), Color(0xFF0D1B4B), Color(0xFF0A2444)))
     } else {
-        Brush.linearGradient(
-            colors = listOf(Color(0xFFEDE7F6), Color(0xFFE3F2FD), Color(0xFFEEF2FF))
-        )
+        Brush.linearGradient(colors = listOf(Color(0xFFEDE7F6), Color(0xFFE3F2FD), Color(0xFFEEF2FF)))
     }
+
 
     Scaffold(
         topBar = {
+
             TopAppBar(
                 title = { Text("Detail Game") },
                 navigationIcon = {
@@ -78,6 +75,7 @@ fun DetailScreen(viewModel: GameViewModel, gameId: Int, onNavigateBack: () -> Un
                 CircularProgressIndicator(color = MaterialTheme.colorScheme.primary)
             }
         } else {
+
             game?.let { g ->
                 Column(
                     modifier = Modifier
@@ -86,7 +84,6 @@ fun DetailScreen(viewModel: GameViewModel, gameId: Int, onNavigateBack: () -> Un
                         .verticalScroll(rememberScrollState())
                         .padding(16.dp)
                 ) {
-                    // ── Card utama dengan gradasi ──
                     Card(
                         modifier = Modifier.fillMaxWidth(),
                         shape = RoundedCornerShape(24.dp),
@@ -99,7 +96,6 @@ fun DetailScreen(viewModel: GameViewModel, gameId: Int, onNavigateBack: () -> Un
                                 .background(cardGradient)
                         ) {
                             Column {
-                                // Gambar header
                                 AsyncImage(
                                     model = g.backgroundImage,
                                     contentDescription = g.name,
@@ -112,7 +108,7 @@ fun DetailScreen(viewModel: GameViewModel, gameId: Int, onNavigateBack: () -> Un
 
                                 Column(modifier = Modifier.padding(24.dp)) {
 
-                                    // ── Judul ──
+                                    // Judul game
                                     Text(
                                         text = g.name,
                                         style = MaterialTheme.typography.headlineMedium,
@@ -122,7 +118,7 @@ fun DetailScreen(viewModel: GameViewModel, gameId: Int, onNavigateBack: () -> Un
 
                                     Spacer(modifier = Modifier.height(12.dp))
 
-                                    // ── Rating ──
+
                                     Row(verticalAlignment = Alignment.CenterVertically) {
                                         Icon(
                                             imageVector = Icons.Default.Star,
@@ -137,15 +133,15 @@ fun DetailScreen(viewModel: GameViewModel, gameId: Int, onNavigateBack: () -> Un
                                             color = MaterialTheme.colorScheme.onSurface,
                                             fontWeight = FontWeight.Bold
                                         )
-                                        // Metacritic badge (jika ada)
+
                                         g.metacritic?.let { score ->
                                             Spacer(modifier = Modifier.width(12.dp))
                                             Surface(
                                                 shape = RoundedCornerShape(8.dp),
                                                 color = when {
-                                                    score >= 75 -> Color(0xFF4CAF50)
-                                                    score >= 50 -> Color(0xFFFFC107)
-                                                    else        -> Color(0xFFF44336)
+                                                    score >= 75 -> Color(0xFF4CAF50) // hijau
+                                                    score >= 50 -> Color(0xFFFFC107) // kuning
+                                                    else        -> Color(0xFFF44336) // merah
                                                 }
                                             ) {
                                                 Text(
@@ -159,7 +155,7 @@ fun DetailScreen(viewModel: GameViewModel, gameId: Int, onNavigateBack: () -> Un
                                         }
                                     }
 
-                                    // ── Tanggal Rilis dengan ikon kalender ──
+
                                     g.released?.let {
                                         Spacer(modifier = Modifier.height(8.dp))
                                         Row(verticalAlignment = Alignment.CenterVertically) {
@@ -178,7 +174,7 @@ fun DetailScreen(viewModel: GameViewModel, gameId: Int, onNavigateBack: () -> Un
                                         }
                                     }
 
-                                    // ── Genre ──
+
                                     val genres = g.genres
                                     if (!genres.isNullOrEmpty()) {
                                         Spacer(modifier = Modifier.height(16.dp))
@@ -190,6 +186,7 @@ fun DetailScreen(viewModel: GameViewModel, gameId: Int, onNavigateBack: () -> Un
                                         )
                                         Spacer(modifier = Modifier.height(8.dp))
                                         LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+
                                             items(genres) { genre ->
                                                 Surface(
                                                     shape = RoundedCornerShape(50),
@@ -210,7 +207,7 @@ fun DetailScreen(viewModel: GameViewModel, gameId: Int, onNavigateBack: () -> Un
                                         }
                                     }
 
-                                    // ── Platform ──
+
                                     val platforms = g.platforms
                                     if (!platforms.isNullOrEmpty()) {
                                         Spacer(modifier = Modifier.height(16.dp))
@@ -251,7 +248,6 @@ fun DetailScreen(viewModel: GameViewModel, gameId: Int, onNavigateBack: () -> Un
                                         }
                                     }
 
-                                    // ── Divider ──
                                     Spacer(modifier = Modifier.height(24.dp))
                                     Box(
                                         modifier = Modifier
@@ -262,7 +258,7 @@ fun DetailScreen(viewModel: GameViewModel, gameId: Int, onNavigateBack: () -> Un
                                     )
                                     Spacer(modifier = Modifier.height(24.dp))
 
-                                    // ── Deskripsi ──
+
                                     Text(
                                         text = "Deskripsi",
                                         style = MaterialTheme.typography.titleLarge,

@@ -8,8 +8,11 @@ import com.example.responsi.ui.AppNavGraph
 import com.example.responsi.ui.theme.ResponsiTheme
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+
         enableEdgeToEdge()
         setContent {
             ResponsiTheme {

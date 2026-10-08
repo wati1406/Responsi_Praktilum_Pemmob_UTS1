@@ -6,7 +6,10 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
+
 interface ApiService {
+
+
     @GET("games")
     suspend fun getGames(
         @Query("key") apiKey: String,
@@ -18,4 +21,5 @@ interface ApiService {
         @Path("id") id: Int,
         @Query("key") apiKey: String
     ): Game
+
 }

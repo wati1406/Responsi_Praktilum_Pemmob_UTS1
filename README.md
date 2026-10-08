@@ -8,7 +8,7 @@ Aplikasi Android berbasis **Kotlin** dan **Jetpack Compose** yang memungkinkan p
 
 |              Home Screen              |              Hasil Pencarian              |               Game Detail Screen               |
 |:-------------------------------------:|:-----------------------------------------:|:----------------------------------------------:|
-| ![Home Screen](screenshots/home.jpeg) | ![Search Result](screenshots/search.jpeg) | ![Game Detail Screen](screenshots/detail.jpeg) |
+| ![Home Screen](screenshots/home.jpeg) | ![Search ](screenshots/search.jpeg) | ![Game Detail Screen](screenshots/detail.jpeg) |
 
 ---
 
@@ -604,7 +604,7 @@ Responsi/
 
 ## Video Penjelasan Kode
 
-[LINK VIDEO]
+https://youtu.be/JOEqlhHn7MM?si=Hyf_-KhbZXxiQ3G8
 
 ---
 
@@ -615,5 +615,5 @@ Responsi/
 | **Nama** | [Wati Rustati]                                        |
 | **NIM** | [H1D024007]                                           |
 | **Kelas** | [Shift lama: B, Shift baru: F]                        |
-| **Mata Kuliah** | Praktikum Mobile Programming                          |
-| **Tugas** | Responsi — Aplikasi Katalog dan Eksplorasi Video Game |
+| **Mata Kuliah** | Praktikum Pemrograman Mobile                          |
+| **Tugas** | Responsi - Aplikasi Katalog dan Eksplorasi Video Game |
